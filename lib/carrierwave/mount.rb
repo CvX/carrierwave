@@ -186,6 +186,7 @@ module CarrierWave
         end
 
         def store_previous_changes_for_#{column}
+          changes = respond_to?(:saved_changes) ? saved_changes : self.changes
           @_previous_changes_for_#{column} = changes[_mounter(:#{column}).serialization_column]
         end
 
@@ -340,6 +341,7 @@ module CarrierWave
         end
 
         def store_previous_changes_for_#{column}
+          changes = respond_to?(:saved_changes) ? saved_changes : self.changes
           @_previous_changes_for_#{column} = changes[_mounter(:#{column}).serialization_column]
         end
 
